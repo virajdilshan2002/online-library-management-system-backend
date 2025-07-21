@@ -10,3 +10,16 @@ export const saveProduct = async (req: Request, res: Response) => {
         res.status(500).json({error: 'Error saving product'});
     }
 }
+
+export const saveProductImage = async (req: Request, res: Response) => {
+    if (!req.file) {
+        return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    console.log("Uploaded file:", req.file);
+
+    res.status(200).json({
+        message: "Image uploaded successfully",
+        fileName: req.file.filename,
+    });
+};
