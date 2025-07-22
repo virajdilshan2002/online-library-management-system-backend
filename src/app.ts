@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions)) // Enable or allow cors
 
 app.use("/api/v1/auth", authRoutes)
-app.use("/api/v1/users", authenticateToken, userRoutes)
+app.use("/api/v1/user", authenticateToken, userRoutes)
 app.use("/api/v1/product", authenticateToken, productsRoutes)
 
 export default app;

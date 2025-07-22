@@ -1,9 +1,10 @@
 import {Router} from "express";
-import {saveProduct, saveProductImage} from "../controllers/product.controller";
+import {getAllProducts, saveProduct, saveProductImage} from "../controllers/product.controller";
 import {authorizeRoles} from "../middleware/auth.middleware";
 import {upload} from "../middleware/multer.middleware";
 const productsRouter: Router = Router()
 
+productsRouter.get("/all", authorizeRoles('ADMIN', 'USER'), getAllProducts)
 productsRouter.post("/save", authorizeRoles('ADMIN'), saveProduct)
 productsRouter.post("/upload_image", upload.single("coverImage"), saveProductImage);
 
